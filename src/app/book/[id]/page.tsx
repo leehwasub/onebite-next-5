@@ -2,7 +2,7 @@ import { BookData } from "@/types";
 import style from "./page.module.css";
 import { notFound } from "next/navigation";
 
-export const dynamicParams = false;
+//export const dynamicParams = false;
 
 export function generateStaticParams() {
   return [

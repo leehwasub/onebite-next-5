@@ -19,9 +19,11 @@ async function Footer() {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  modal,
+}: {
   children: React.ReactNode;
-}>) {
+  modal: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
@@ -32,6 +34,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
+        {modal}
         <div id="modal-root"></div>
       </body>
     </html>

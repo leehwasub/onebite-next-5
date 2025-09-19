@@ -61,6 +61,24 @@ async function ReviewList({bookId} : {bookId : string})
   );
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`);
+  if (!response.ok) {
+    throw new Error(`Book fetch Failed: ${response.statusText}`);
+  }
+  const book : BookData = await response.json();
+  return {
+    title: `한입 북스 - 도서 상세: ${book.title}`,
+    description: `${book.description}`,
+    openGraph: {
+      title: `한입 북스 - 도서 상세: ${book.title}`,
+      description: `${book.description}`,
+      images: [book.coverImgUrl],
+    },
+  };
+}
+
 export default async function Page({
   params,
 }: {

@@ -6,6 +6,7 @@ import delay from "@/util/delay";
 import { Suspense } from "react";
 import BookItemSkeleton from "@/components/skeleton/book-item-skeleton";
 import BookListSkeleton from "@/components/skeleton/book-list-seleton";
+import { Metadata } from "next";
 
 export const dynamic = 'force-dynamic';
 //특정 페이지의 유형을 강제로 Static, Dynamic 페이지로 설정
@@ -13,6 +14,18 @@ export const dynamic = 'force-dynamic';
 // 2. force-dynamic : 페이지의 유형을 Dynamic 페이지로 설정
 // 3. force-static : 페이지의 유형을 Static 페이지로 설정
 // 4. error : 페이지의 유형을 Static 페이지로 설정 (설정하면 안되는 이유 -> 빌드 오류)
+
+export const metadata : Metadata = 
+{
+  title: "한입 북스",
+  description: "한입 북스에 등록된 도서를 만나보세요",
+  openGraph: {
+    title: "한입 북스",
+    description: "한입 북스에 등록된 도서를 만나보세요",
+    images: ["/thumbnail.png"],
+  },
+}
+
 
 async function AllBooks() {
   await delay(1500);

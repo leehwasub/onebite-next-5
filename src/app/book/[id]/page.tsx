@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { createReviewAction } from "@/actions/create-review-action"; 
 import ReviewItem from "@/components/review-item";
 import ReviewEditor from "@/components/review-editor";
-
+import Image from "next/image";
 //export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -33,7 +33,7 @@ export async function BookDetail({bookId} : {bookId : string})
         className={style.cover_img_container}
         style={{ backgroundImage: `url('${coverImgUrl}')` }}
       >
-        <img src={coverImgUrl} />
+      <Image src={coverImgUrl} alt={`${title}의 책 표지`} width={240} height={300} />
       </div>
       <div className={style.title}>{title}</div>
       <div className={style.subTitle}>{subTitle}</div>
